@@ -102,7 +102,7 @@ void AForm::beSigned(const Bureaucrat& bure)
 	throw GradeTooLowException();
 }
 
-void AForm::checkRequierments(Bureaucrat const& bure)
+void AForm::checkRequierments(Bureaucrat const& bure) const
 {
 	if(this->getSigned() == false)
 		throw FormNotSigned();

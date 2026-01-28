@@ -43,6 +43,6 @@ void PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
 	this->checkRequierments(executor);
 
-	std::cout	<< _target << " has been pardoned by Zaphod Beeblebrox." 
+	std::cout	<< _target << " has been pardoned by Zaphod Beeblebrox."
 				<< std::endl;
 }

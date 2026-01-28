@@ -39,18 +39,18 @@ class Bureaucrat
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw(); 
+				virtual const char* what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw(); 
+				virtual const char* what() const throw();
 		};
 
 	private:
 		const std::string _name;
-		int _grade; 
+		int _grade;
 };
 
 std::ostream& operator<<(std::ostream& o, const Bureaucrat& rhs);
