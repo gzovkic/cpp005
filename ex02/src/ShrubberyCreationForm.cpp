@@ -12,7 +12,7 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-	: AForm("ShrubberyCreationForm", target, 145, 137), _target(target)
+	: AForm("shrubbery", "ShrubberyCreationForm", 145, 137), _target(target)
 {
 	// std::cout 	<< BOLD << "Shrubbery deconstructor called"
 	//				<< RESET << std::endl;
@@ -41,6 +41,23 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
-	// std::cout 	<< BOLD << "Shrubbery deconstructor called"
-	//				<< RESET << std::endl;
+	this->checkRequierments(executor);
+
+	std::ofstream file;
+	file.open(this->_target + "_shrubbery");
+
+	if(!file.is_open())
+		throw std::runtime_error("Could not open file for writing");
+
+	file << "       _-_" << std::endl;
+    file << "    /~~   ~~\\" << std::endl;
+    file << " /~~         ~~\\" << std::endl;
+    file << "{               }" << std::endl;
+    file << " \\  _-     -_  /" << std::endl;
+    file << "   ~  \\\\ //  ~" << std::endl;
+    file << "_- -   | | _- _" << std::endl;
+    file << "  _ -  | |   -_" << std::endl;
+    file << "      // \\\\" << std::endl;
+
+	file.close();
 }
