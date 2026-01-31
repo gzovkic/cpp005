@@ -1,4 +1,4 @@
-NAME = bureaucrat
+NAME = intern
 CPP = c++
 RM = rm -rf
 

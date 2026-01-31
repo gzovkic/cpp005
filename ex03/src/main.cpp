@@ -3,44 +3,71 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
+    std::cout 	<< YELLOW << "---- Robotomy ----"
+	        	<< RESET << std::endl;
+    {
+    Intern someRandomIntern;
+    Bureaucrat boss("Boss 1", 1);
+    AForm* rrf;
+
     std::srand(std::time(0));
-    try 
-	{
-        Bureaucrat boss("The Boss", 1);
-        Bureaucrat intern("The Intern", 150);
-
-        std::cout << "--- Shrubbery Test ---" << std::endl;
-        ShrubberyCreationForm shrub("home");
-        
-        boss.executeForm(shrub); 
-        
-        boss.signForm(shrub);
-        boss.executeForm(shrub);
-
-        std::cout << "\n--- Robotomy Test ---" << std::endl;
-        RobotomyRequestForm robo("Bender");
-        boss.signForm(robo);
-        boss.executeForm(robo);
-        boss.executeForm(robo);
-
-        std::cout << "\n--- Presidential Test ---" << std::endl;
-        PresidentialPardonForm pardon("Arthur Dent");
-        
-        intern.signForm(pardon);
-        
-        boss.signForm(pardon);
-        intern.executeForm(pardon);
-        
-        boss.executeForm(pardon);
-
+    rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+    
+    if (rrf) {
+        boss.signForm(*rrf);
+        boss.executeForm(*rrf);
+        delete rrf;
     }
-	catch (std::exception &e)
-	{
-        std::cerr << "Unexpected error: " << e.what() << std::endl;
     }
+    std::cout 	<< YELLOW << "---- Shrubbery ----"
+	        	<< RESET << std::endl;
+    {
+    Intern someRandomIntern;
+    Bureaucrat boss("Boss 2", 1);
+    AForm* rrf;
 
+    rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+    
+    if (rrf) {
+        boss.signForm(*rrf);
+        boss.executeForm(*rrf);
+        delete rrf;
+    }
+    }
+    std::cout 	<< YELLOW << "---- Presidential ----"
+	        	<< RESET << std::endl;
+    {
+    Intern someRandomIntern;
+    Bureaucrat boss("Boss 3", 1);
+    AForm* rrf;
+
+    rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
+    
+    if (rrf) {
+        boss.signForm(*rrf);
+        boss.executeForm(*rrf);
+        delete rrf;
+    }
+    }
+    std::cout 	<< YELLOW << "---- Fake ----"
+	        	<< RESET << std::endl;
+    {
+    Intern someRandomIntern;
+    Bureaucrat boss("Boss 4", 1);
+    AForm* rrf;
+
+    rrf = someRandomIntern.makeForm("fake", "Bender");
+    
+    if (rrf) {
+        boss.signForm(*rrf);
+        boss.executeForm(*rrf);
+        delete rrf; 
+    }
+    }
+    
     return 0;
 }
